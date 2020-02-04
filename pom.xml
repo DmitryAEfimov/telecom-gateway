@@ -18,8 +18,6 @@
 	<properties>
 		<java.version>11</java.version>
 		<jetty.version>9.4.26.v20200117</jetty.version>
-		<docker.account>USERNAME</docker.account>
-		<docker.password>PASSWORD</docker.password>
 	</properties>
 
 	<dependencies>
@@ -97,23 +95,11 @@
 							<goal>build</goal>
 						</goals>
 					</execution>
-					<execution>
-						<id>Push docker container</id>
-						<phase>install</phase>
-						<goals>
-							<goal>push</goal>
-						</goals>
-					</execution>
 				</executions>
 				<configuration>
-					<authConfig>
-						<username>${docker.account}</username>
-						<password>${docker.password}</password>
-					</authConfig>
 					<images>
 						<image>
 							<name>${project.artifactId}</name>
-							<registry>registry.hub.docker.com/${docker.account}</registry>
 							<build>
 								<dockerFile>${project.basedir}/Dockerfile</dockerFile>
 								<tags>
