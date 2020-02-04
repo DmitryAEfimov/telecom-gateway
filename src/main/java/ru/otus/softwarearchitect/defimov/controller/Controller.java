@@ -1,4 +1,4 @@
-package ru.otus.softwarearchitect.defimov.telecomgateway.controller;
+package ru.otus.softwarearchitect.defimov.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

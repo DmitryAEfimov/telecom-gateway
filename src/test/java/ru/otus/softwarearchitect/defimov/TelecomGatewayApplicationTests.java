@@ -1,4 +1,4 @@
-package ru.otus.softwarearchitect.defimov.telecomgateway;
+package ru.otus.softwarearchitect.defimov;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

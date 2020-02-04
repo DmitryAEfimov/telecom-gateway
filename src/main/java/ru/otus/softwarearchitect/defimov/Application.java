@@ -1,4 +1,4 @@
-package ru.otus.softwarearchitect.defimov.telecomgateway;
+package ru.otus.softwarearchitect.defimov;
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
