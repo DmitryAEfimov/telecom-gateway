@@ -1,0 +1,29 @@
+<Configuration status="info">
+	<Appenders>
+		<Console name="console" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+		</Console>
+
+		<RollingFile
+				name="rollingFile"
+				fileName="logs/server.log"
+				filePattern="logs/server/telecom.%i.log"
+				ignoreExceptions="false">
+			<PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+			<Policies>
+				<SizeBasedTriggeringPolicy size="10MB"/>
+			</Policies>
+			<DefaultRolloverStrategy max="5"/>
+		</RollingFile>
+	</Appenders>
+
+	<Loggers>
+		<Logger name="ru.otus.softwarearchitect.defimov" level="debug">
+			<AppenderRef ref="rollingFile"/>
+		</Logger>
+
+		<Root level="info">
+			<AppenderRef ref="console"/>
+		</Root>
+	</Loggers>
+</Configuration>
