@@ -10,8 +10,8 @@
 	<packaging>pom</packaging>
 
 	<modules>
-		<module>web</module>
 		<module>core</module>
 		<module>gateway</module>
+		<module>web</module>
 	</modules>
 </project>
