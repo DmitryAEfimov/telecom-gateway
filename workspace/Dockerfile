@@ -15,14 +15,13 @@ FROM tomcat:9.0.31
 RUN apt-get install curl && rm -rf $CATALINA_HOME/webapps/* && mkdir -p /flyway
 ENV FLYWAY_VERSION 6.3.0
 
-RUN curl -L https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/${FLYWAY_VERSION}/flyway-commandline-${FLYWAY_VERSION}.tar.gz -o flyway-commandline-${FLYWAY_VERSION}.tar.gz \
-  && tar -xzf flyway-commandline-${FLYWAY_VERSION}.tar.gz --strip-components=1 \
-  && rm flyway-commandline-${FLYWAY_VERSION}.tar.gz
-
-ENV PATH="/flyway:${PATH}"
 WORKDIR /flyway
+RUN curl -L https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/${FLYWAY_VERSION}/flyway-commandline-${FLYWAY_VERSION}.tar.gz \
+    -o flyway-commandline-${FLYWAY_VERSION}.tar.gz && \
+    tar -xzf flyway-commandline-${FLYWAY_VERSION}.tar.gz --strip-components=1 && \
+    rm flyway-commandline-${FLYWAY_VERSION}.tar.gz
 
-RUN ls -la .
+ENV PATH /flyway:${PATH}
 
 COPY db/conf/flyway.conf conf/flyway.conf
 COPY db/migration/* db/migration/
@@ -30,4 +29,3 @@ COPY db/migration/* db/migration/
 COPY --from=maven /tmp/workspace/telecom-app/web/target/telecom.war $CATALINA_HOME/webapps/telecom.war
 
 EXPOSE 8080
-CMD ["catalina.sh", "run"]

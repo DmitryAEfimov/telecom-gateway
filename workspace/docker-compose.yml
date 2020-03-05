@@ -16,11 +16,12 @@ services:
       - 8080:8080
     volumes:
       - ./wait-for-it.sh:/usr/bin/wait-for-it.sh
-    command: ["wait-for-it.sh", "db:5432", "--strict", "--timeout=60", "--", "echo", "database is up"]
+      - ./after-wait-run.sh:/usr/bin/after-wait-run.sh
+    entrypoint: ["wait-for-it.sh", "db:5432", "--strict", "--timeout=60", "--", "after-wait-run.sh"]
     depends_on:
       - db
     networks:
       - telecom
 
 networks:
-  telecom:
+    telecom:
