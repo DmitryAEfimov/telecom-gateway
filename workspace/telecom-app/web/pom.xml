@@ -37,6 +37,13 @@
 			<artifactId>gateway</artifactId>
 			<version>${revision}</version>
 		</dependency>
+
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>${h2.version}</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -57,7 +64,6 @@
 							<filtering>true</filtering>
 							<includes>
 								<include>**/*.properties</include>
-								<include>**/*.xml</include>
 							</includes>
 						</resource>
 					</webResources>
