@@ -16,7 +16,6 @@
 			<groupId>ru.otus.softwarearchitect.defimov</groupId>
 			<artifactId>core</artifactId>
 			<version>${revision}</version>
-			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 </project>
