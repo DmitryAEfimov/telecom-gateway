@@ -1,0 +1,27 @@
+version: "3.7"
+services:
+  db:
+    image: telecom-db:0.1.0
+    container_name: telecom-db
+    ports:
+      - 5432:5432
+    restart: always
+    networks:
+      - telecom
+
+  web:
+    image: telecom-web:0.1.0
+    container_name: telecom-web
+    ports:
+      - 8080:8080
+    volumes:
+      - ./wait-for-it.sh:/usr/bin/wait-for-it.sh
+      - ./after-wait-run.sh:/usr/bin/after-wait-run.sh
+    entrypoint: ["wait-for-it.sh", "db:5432", "--strict", "--timeout=60", "--", "after-wait-run.sh"]
+    depends_on:
+      - db
+    networks:
+      - telecom
+
+networks:
+    telecom:

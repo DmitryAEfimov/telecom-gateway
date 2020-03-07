@@ -17,6 +17,7 @@
 
 	<properties>
 		<app.name>telecom</app.name>
+		<h2.version>1.4.200</h2.version>
 	</properties>
 
 	<dependencies>
@@ -37,6 +38,13 @@
 			<artifactId>gateway</artifactId>
 			<version>${revision}</version>
 		</dependency>
+
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>${h2.version}</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -47,6 +55,8 @@
 				<artifactId>maven-war-plugin</artifactId>
 				<version>3.2.3</version>
 				<configuration>
+					<warName>${app.name}</warName>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
 					<resourceEncoding>${project.build.sourceEncoding}</resourceEncoding>
 					<webResources>
 						<resource>
@@ -58,34 +68,6 @@
 							</includes>
 						</resource>
 					</webResources>
-				</configuration>
-			</plugin>
-
-			<plugin>
-				<groupId>io.fabric8</groupId>
-				<artifactId>docker-maven-plugin</artifactId>
-				<version>0.33.0</version>
-				<executions>
-					<execution>
-						<id>Build docker container</id>
-						<phase>package</phase>
-						<goals>
-							<goal>build</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<images>
-						<image>
-							<name>${app.name}</name>
-							<build>
-								<dockerFile>${project.basedir}/Dockerfile</dockerFile>
-								<tags>
-									<tag>${project.version}</tag>
-								</tags>
-							</build>
-						</image>
-					</images>
 				</configuration>
 			</plugin>
 		</plugins>
