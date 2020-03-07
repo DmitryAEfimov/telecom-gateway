@@ -17,6 +17,7 @@
 
 	<properties>
 		<app.name>telecom</app.name>
+		<h2.version>1.4.200</h2.version>
 	</properties>
 
 	<dependencies>
