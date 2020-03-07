@@ -1,5 +1,5 @@
 # Telecom application.
-This is MVP of [OSS](https://en.wikipedia.org/wiki/Operations_support_system) class system. It provides CRUD operations for active equipment inventory.
+This is MVP of [OSS](https://en.wikipedia.org/wiki/Operations_support_system) class system. It provides CRUD operations for active equipment inventorization.
 Application has been developed in scope of [software architect](https://otus.ru/lessons/arhitektor-po/) course.
 
 ## Domain model:
