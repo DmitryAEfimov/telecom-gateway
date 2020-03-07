@@ -35,6 +35,13 @@ After both images have been built you should run command:
 docker-compose -f docker-compose.yml up -d
 ```
 
+## Uninstall
+To stop and remove telecom-db & telecom-web containers execute
+```bash
+cd <your_project_location>/workspace
+docker-compose -f docker-compose.yml down --remove-orphans --volumes
+```
+
 ## Usage
 
 Application URL context is `http://localhost:8080/telecom`
